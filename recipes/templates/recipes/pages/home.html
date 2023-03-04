@@ -1,16 +1,16 @@
-{% include 'recipes/partials/head.html' %}
+{% extends 'global/base.html' %} 
 
-<body>
-    {% include 'recipes/partials/header.html' %}
+{% block content %}
+<div class="main-content main-content-list container">
+    {% include 'recipes/partials/recipe.html' %}
+    {% include 'recipes/partials/recipe.html' %}
+    {% include 'recipes/partials/recipe.html' %}
+    {% include 'recipes/partials/recipe.html' %}
+    {% include 'recipes/partials/recipe.html' %}
+    {% include 'recipes/partials/recipe.html' %}
+    {% include 'recipes/partials/recipe.html' %}
+    {% include 'recipes/partials/recipe.html' %}
+    {% include 'recipes/partials/recipe.html' %}
+</div>
 
-    <div class="search-container">
-        <div class="container">
-            <form action="" class="search-form">
-                <input type="search" class="search-input" name="search">
-                <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-    </div>
-</body>
-
-</html>
+{% endblock content %}
