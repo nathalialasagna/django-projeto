@@ -1,7 +1,14 @@
+from unittest import skip
+
 from django.test import TestCase
 from django.urls import resolve, reverse
 
 from recipes import views
+from recipes.models import Recipe
+
+# from .test_recipe_base import RecipeTestBase
+
+# @skip('menssagrm') para pular teste
 
 
 class RecipeViewsTest(TestCase):
@@ -15,12 +22,13 @@ class RecipeViewsTest(TestCase):
 
     def test_recipe_home_view_loads_correct_template(self):
         response = self.client.get(reverse('recipes:home'))
-        self.assertTemplateUsed(response, '/recipes/pages/home.html')
+        self.assertTemplateUsed(response, 'recipes/pages/home.html')
 
     def test_recipe_home_template_shows_no_recipes_found_if_no_recipes(self):
+        Recipe.objects.all().delete()
         response = self.client.get(reverse('recipes:home'))
         self.assertIn(
-            'Not Found',
+            'No recipe found here!',
             response.content.decode('utf-8')
         )
 
